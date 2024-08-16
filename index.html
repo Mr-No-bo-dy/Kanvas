@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanvas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/js-ico.svg">
+</head>
+
+<body>
+    <header class="header">
+        <div class="wrapper">
+            <div class="flex">
+                <a class="logo flex" href="/">
+                    <picture>
+                        <img src="img/logo.png" alt="kanvas logo">
+                    </picture>
+                    <h1>Kanvas</h1>
+                </a>
+                <div class="hamburger"><span></span></div>
+                <nav class="header_menu flex">
+                    <ul class="menu flex">
+                        <li><a href="#">Галерея</a></li>
+                        <li><a href="#">Про нас</a></li>
+                    </ul>
+                    <div>
+                        <button id="orderCall" class="btn">замовити дзвінок</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Popup -->
+        <div id="callPopUp">
+            <div class="popup_wrap">
+                <h2>Замовити дзвінок</h2>
+                <form action="send.php" method="post">
+                    <label class="relative">
+                        <input class="myTel" type="tel" name="telCall">
+                        <div class="errorTel"></div>
+                    </label>
+                    <button id="callMe" class="btn" type="submit" disabled>Подзвоніть мені</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Toast -->
+        <div id="toast" class="toast">
+            <p>Розмір було заокруглено до 5-кратного значення</p>
+            <div id="progressBar" class="progressBar"></div>
+        </div>
+    </header>
+
+    <main class="main flex">
+        <div class="canvas_block">
+            <div class="stand">
+                <img src="img/stand.png" alt="">
+                <div class="canvas"></div>
+            </div>
+        </div>
+        <div class="params">
+            <form name="canvasForm" class="params_wrap" action="send.php" method="post">
+                <div class="sizes_block">
+                    <h2>Виберіть розмір</h2>
+                    <div class="choose_size flex">
+                        <div>
+                            <input id="size_30_30" class="size" type="radio" name="size" value="30_30" checked>
+                            <label for="size_30_30">30х30</label>
+                        </div>
+                        <div>
+                            <input id="size_30_90" class="size" type="radio" name="size" value="30_90">
+                            <label for="size_30_90">30х90</label>
+                        </div>
+                        <div>
+                            <input id="size_90_120" class="size" type="radio" name="size" value="90_120">
+                            <label for="size_90_120">90х120</label>
+                        </div>
+                        <div>
+                            <input id="size_90_150" class="size" type="radio" name="size" value="90_150">
+                            <label for="size_90_150">90х150</label>
+                        </div>
+                        <button id="setSize" class="btn" type="button">задати розмір</button>
+                    </div>
+                    <div class="set_size flex hidden">
+                        <span class="relative">
+                            <label for="width">ширина</label>
+                            <input id="width" type="number" name="" min="30" max="150">
+                        </span>
+                        <span class="multiply">X</span>
+                        <span class="relative">
+                            <label for="height">висота</label>
+                            <input id="height" type="number" name="" min="30" max="150">
+                        </span>
+                        <input id="activeSizes" type="hidden" name="sizes" value="">
+                        <button id="calculate" class="btn" type="button" disabled>підрахувати</button>
+                        <div id="errorSize" class="errorSize"></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="additional">
+                    <h2>Додаткові опції</h2>
+                    <div class="better_canvas flex">
+                        <div>
+                            <input id="better_canvas" type="checkbox" name="better_canvas" value="35">
+                            <label for="better_canvas">дорожче полотно</label>
+                        </div>
+                        <p>+ <span class="addPrice">35</span> грн</p>
+                    </div>
+                    <div class="with_border flex">
+                        <div>
+                            <input id="with_border" type="checkbox" name="with_border" value="10">
+                            <label for="with_border">з рамкою</label>
+                        </div>
+                        <p>+ <span class="addPrice">10</span> грн</p>
+                    </div>
+                    <div class="with_delivery flex">
+                        <div>
+                            <input id="with_delivery" type="checkbox" name="with_delivery" value="40">
+                            <label for="with_delivery">з доставкою (Нова Пошта)</label>
+                        </div>
+                        <p>+ <span class="addPrice">40</span> грн</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="sum_block flex">
+                    <button id="buy" type="button" class="btn">придбати</button>
+                    <button id="cancel" type="button" class="btn">передумав</button>
+                    <div class="sum flex">
+                        <p class="sum_label">Загальна сума:</p>
+                        <p>
+                            <strong class="sumNumber"></strong>
+                            <span class="sumCurrency">грн</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="order_block flex">
+                    <label class="relative"><span>Телефон:</span>
+                        <div class="errorTelOrder"></div>
+                        <input class="myTelOrder" type="tel" name="telOrder">
+                    </label>
+                    <button id="order" class="btn" type="submit" disabled>Замовити</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="wrapper">
+            <p class="copyright">&copy; Kanvas. Всі права захищені</p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
